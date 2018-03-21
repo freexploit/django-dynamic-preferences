@@ -79,8 +79,8 @@ class GlobalPreferenceModel(BasePreferenceModel):
         unique_together = ('section', 'name')
         app_label = 'dynamic_preferences'
 
-        verbose_name = "global preference"
-        verbose_name_plural = "global preferences"
+        verbose_name = "Preferencia"
+        verbose_name_plural = "Preferencias Globales"
 
 
 class PerInstancePreferenceModel(BasePreferenceModel):
