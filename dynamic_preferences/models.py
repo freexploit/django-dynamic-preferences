@@ -29,7 +29,7 @@ class BasePreferenceModel(models.Model):
 
     class Meta:
         abstract = True
-        app_label = 'Configuracion'
+        app_label = 'dynamic_preferences'
 
     @cached_property
     def preference(self):
@@ -42,7 +42,7 @@ class BasePreferenceModel(models.Model):
 
     @property
     def help_text(self):
-        return self.preference.get('help_text', '',)
+        return self.preference.get('help_text', '')
 
     def set_value(self, value):
         """
@@ -77,10 +77,10 @@ class GlobalPreferenceModel(BasePreferenceModel):
 
     class Meta:
         unique_together = ('section', 'name')
-        app_label = 'Preferencias Dinamicas'
+        app_label = 'dynamic_preferences'
 
-        verbose_name = "Preferencia Global"
-        verbose_name_plural = "Preferencias Globales"
+        verbose_name = "global preference"
+        verbose_name_plural = "global preferences"
 
 
 class PerInstancePreferenceModel(BasePreferenceModel):
