@@ -6,7 +6,7 @@ from .registries import preference_models, global_preferences_registry
 
 class DynamicPreferencesConfig(AppConfig):
     name = 'dynamic_preferences'
-    verbose_name = "Dynamic Preferences"
+    verbose_name = "Configuration"
 
     def ready(self):
         GlobalPreferenceModel = self.get_model('GlobalPreferenceModel')
