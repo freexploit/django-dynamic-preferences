@@ -22,10 +22,10 @@ class BasePreferenceModel(models.Model):
         max_length=150, db_index=True, blank=True, null=True, default=None)
 
     #: a name for the preference
-    name = models.CharField(max_length=150, db_index=True)
+    name = models.CharField(max_length=150, db_index=True, verbose_name="nombre")
 
     #: a value, serialized to a string. This field should not be accessed directly, use :py:attr:`BasePreferenceModel.value` instead
-    raw_value = models.TextField(null=True, blank=True)
+    raw_value = models.TextField(null=True, blank=True, verbose_name="Valor")
 
     class Meta:
         abstract = True
