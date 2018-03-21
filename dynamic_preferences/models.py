@@ -40,11 +40,13 @@ class BasePreferenceModel(models.Model):
     def verbose_name(self):
         return self.preference.get('verbose_name', self.preference.identifier)
     verbose_name.short_description = "Nombre"
+    verbose_name = property(verbose_name)
 
     @property
     def help_text(self):
         return self.preference.get('help_text', '',)
     help_text.short_description = "Texto ayuda"
+    help_text = property(help_text)
 
     def set_value(self, value):
         """
