@@ -22,14 +22,14 @@ class BasePreferenceModel(models.Model):
         max_length=150, db_index=True, blank=True, null=True, default=None)
 
     #: a name for the preference
-    name = models.CharField(max_length=150, db_index=True, verbose_name="nombre")
+    name = models.CharField(max_length=150, db_index=True, verbose_name="Nombre")
 
     #: a value, serialized to a string. This field should not be accessed directly, use :py:attr:`BasePreferenceModel.value` instead
     raw_value = models.TextField(null=True, blank=True, verbose_name="Valor")
 
     class Meta:
         abstract = True
-        app_label = 'dynamic_preferences'
+        app_label = 'Configuracion'
 
     @cached_property
     def preference(self):
@@ -39,10 +39,12 @@ class BasePreferenceModel(models.Model):
     @property
     def verbose_name(self):
         return self.preference.get('verbose_name', self.preference.identifier)
+    verbose_name.short_description = "Nombre"
 
     @property
     def help_text(self):
-        return self.preference.get('help_text', '')
+        return self.preference.get('help_text', '',)
+    help_text.short_description = "Texto ayuda"
 
     def set_value(self, value):
         """
@@ -77,10 +79,10 @@ class GlobalPreferenceModel(BasePreferenceModel):
 
     class Meta:
         unique_together = ('section', 'name')
-        app_label = 'dynamic_preferences'
+        app_label = 'Preferencias Dinamicas'
 
-        verbose_name = "global preference"
-        verbose_name_plural = "global preferences"
+        verbose_name = "Preferencia Global"
+        verbose_name_plural = "Preferencias Globales"
 
 
 class PerInstancePreferenceModel(BasePreferenceModel):
