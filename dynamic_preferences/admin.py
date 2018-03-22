@@ -60,7 +60,7 @@ class DynamicPreferenceAdmin(admin.ModelAdmin):
 class GlobalPreferenceAdmin(DynamicPreferenceAdmin):
     form = GlobalSinglePreferenceForm
     changelist_form = GlobalSinglePreferenceForm
-    change_form_template = "dynamic_change_form.html"
+    change_form_template = "dynamic_preferences/dynamic_change_form.html"
 
     def get_queryset(self, *args, **kwargs):
         # Instanciate default prefs
