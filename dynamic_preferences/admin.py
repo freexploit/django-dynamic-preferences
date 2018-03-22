@@ -56,6 +56,9 @@ class DynamicPreferenceAdmin(admin.ModelAdmin):
             pass
         return obj.section
 
+    def has_add_permission(self, request):
+        return False
+
 
 class GlobalPreferenceAdmin(DynamicPreferenceAdmin):
     form = GlobalSinglePreferenceForm
